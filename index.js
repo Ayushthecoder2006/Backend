@@ -70,8 +70,18 @@ app.post('/',(req,res)=>{
 app.post('/about',(req,res)=>{
     res.send("about from post")
 })
-app.get('/about',(req,res)=>{
-    res.send("about from get ")
+// query parameter
+app.get('/search',(req,res)=>{
+    res.send(req.query)
+})
+
+// Path parameter
+app.get('/user/:id',(req,res)=>{
+    // let id = req.params.id
+    let {id} = req.params // destructuring here we take the value from url and store in a same name variable
+    // console.log(req.params,"hehehe");
+    console.log(id)
+    res.send(id)
 })
 
 app.listen(3000,()=>{
