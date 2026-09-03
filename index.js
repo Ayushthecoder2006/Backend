@@ -12,9 +12,12 @@
 // // Delete folder
 // fs.rmdirSync("folder")
 
-
 // let data = fs.readFileSync("index.txt")
 // console.log(data.toString(),"hehehehehe");
+
+
+
+
 
 // oprating System
 // let os = require('os')
@@ -26,14 +29,52 @@
 // console.log(os.uptime()/3600);
 
 
-let http = require('http')
-let server = http.createServer((req,res)=>{
-    res.write("Hello ")
-    res.end("Hello")
+
+
+
+
+// let http = require('http')
+// let server = http.createServer((req,res)=>{
+//     res.write("Hello ")
+//     // res.end("Hello")
+//     if(req.url=='/') res.end("Hello")
+//     else if(req.url=='/about') res.end("\nAbout")
+// })
+// server.listen(3000,()=>{
+//     console.log("server running......")
+// })
+
+
+
+let express = require('express')
+let app = express()
+
+// app.use((req,res,next)=>{
+//     console.log("Mai nhi jane dunga");
+//     next()
+    
+// })
+// app.use((req,res,next)=>{
+//     console.log("Mai to bilkul nhi jane dunga");
+    
+// })
+
+app.get('/',(req,res)=>{
+    res.send("slash from get")
 })
-server.listen(3000,()=>{
-    console.log("server running......")
+
+app.post('/',(req,res)=>{
+    res.send("slash from post")
 })
 
+app.post('/about',(req,res)=>{
+    res.send("about from post")
+})
+app.get('/about',(req,res)=>{
+    res.send("about from get ")
+})
 
-
+app.listen(3000,()=>{
+    console.log("Server chalu ho gya");
+    
+})
